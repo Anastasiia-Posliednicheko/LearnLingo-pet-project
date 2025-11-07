@@ -39,7 +39,7 @@ export default function Header() {
       <div style={{ display:"flex", gap:12 }}>
         {user ? (
           <>
-            <span>{user.displayName || user.name || user.email}</span>
+            <span>{user.displayName || user.name}</span>
             <button onClick={handleLogout} disabled={pending}>Log out</button>
           </>
         ) : (
