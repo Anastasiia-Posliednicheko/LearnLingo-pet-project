@@ -1,13 +1,14 @@
 import React from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/auth/slice";
 
 export default function AuthBootstrap({ children }) {
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setUser({ uid: user.uid, email: user.email,displayName: user.displayName || null }));

@@ -1,11 +1,14 @@
 import React from "react";
+import { useState } from "react";
+
+
 export default function TeacherCard({
   teacher,
   isFavorite = false,
   onToggleFavorite,
   onBookTrial,
 }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   if (!teacher) return null;
 

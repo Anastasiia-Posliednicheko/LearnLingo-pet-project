@@ -1,9 +1,10 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 
-export default function ModalShell({ title, onClose, children }) {
-  const backdropRef = React.useRef(null);
+export default function AuthModal({ title, onClose, children }) {
+  const backdropRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const onKey = (e) => e.key === "Escape" && onClose?.();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
