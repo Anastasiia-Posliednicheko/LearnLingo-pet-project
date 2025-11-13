@@ -12,18 +12,14 @@ export async function fetchAllTeachers() {
     }
 
     const data = snapshot.val();
-    const teachersArray = Array.isArray(data)
-      ? data
-      : Object.values(data || {});
+    return Object.entries(data).map(([firebaseId, teacherObj]) => ({
+      id: String(firebaseId),
+      ...teacherObj,
+    }));
 
-    return teachersArray
-      .filter(Boolean)
-      .map((teacher, index) => ({
-        id: teacher.id || `teacher-${index}`,
-        ...teacher,
-      }));
   } catch (error) {
     console.error("❌ Failed to fetch teachers from Firebase:", error);
     return [];
   }
 }
+

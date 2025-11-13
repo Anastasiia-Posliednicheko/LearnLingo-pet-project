@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/auth/operations";
@@ -12,8 +12,8 @@ export default function Header() {
   const user = useSelector(selectAuthUser);
   const pending = useSelector(selectAuthPending);
 
-  const [openLogin, setOpenLogin] = React.useState(false);
-  const [openRegister, setOpenRegister] = React.useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
 
   const handleLogout = async () => {
     await logoutUser();
@@ -32,8 +32,11 @@ export default function Header() {
 
       <nav style={{ display:"flex", gap:24 }}>
         <NavLink to="/" style={{ textDecoration:"none" }}>Home</NavLink>
-        <NavLink to="/teachers" style={{ textDecoration:"none" }}>Teachers</NavLink>
-        <NavLink to="/favorites" style={{ textDecoration:"none" }}>Favorites</NavLink>
+        <NavLink to="/teachers" style={{ textDecoration: "none" }}>Teachers</NavLink>
+        {user && (
+          <NavLink to="/favorites" style={{ textDecoration: "none" }}>Favorites</NavLink>
+          )}
+        
       </nav>
 
       <div style={{ display:"flex", gap:12 }}>

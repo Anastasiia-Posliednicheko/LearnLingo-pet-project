@@ -9,6 +9,9 @@ export async function getFavoriteIds(uid) {
 
 export async function setFavorite(uid, teacherId, makeFav) {
   const node = ref(db, `userFavorites/${uid}/${teacherId}`);
-  if (makeFav) await set(node, true);
-  else await remove(node);
+  if (makeFav){ 
+    await set(node, true);
+  } else { 
+    await remove(node);
+    }
 }

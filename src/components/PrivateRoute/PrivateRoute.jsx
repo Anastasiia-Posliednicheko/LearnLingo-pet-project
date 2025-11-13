@@ -7,9 +7,9 @@ export default function PrivateRoute({ children }) {
   const location = useLocation();
     
     if (loading) return null;
-    if (!user) {
+    if (!user) 
     return <Navigate to="/teachers" state={{ from: location }} replace />;
-  }
+  
 
   return children;
 }

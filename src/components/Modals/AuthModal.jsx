@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useRef } from "react";
 
 export default function AuthModal({ title, onClose, children }) {

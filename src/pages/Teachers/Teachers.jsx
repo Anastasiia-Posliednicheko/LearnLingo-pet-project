@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchAllTeachers } from "../../services/teachers.js";
 import { getFavoriteIds, setFavorite } from "../../services/favorites.js";
+import { auth } from "../../services/firebase.js";
 import TeacherCard from "../../components/TeacherCard/TeacherCard.jsx";
 import AuthRequiredModal from "../../components/Modals/AuthRequiredModal.jsx"; 
 
@@ -49,18 +50,19 @@ export default function Teachers() {
  
 useEffect(() => {
   (async () => {
-    if (!user?.uid) {
+    const uid = user?.uid || auth.currentUser?.uid;
+    if (!uid) {
       setFavIds([]);
       return;
     }
     try {
-      const ids = await getFavoriteIds(user.uid);
+      const ids = await getFavoriteIds(uid);
       setFavIds(ids);
-    } catch {
-      //console.error(error);
+    } catch(err) {
+     console.error("Failed to fetch favorites ids:", err);
     }
   })();
-}, [user?.uid]);
+}, [user]);
 
 
   
@@ -79,15 +81,23 @@ useEffect(() => {
   };
 
   const handleToggleFavorite = async (teacherId) => {
-    if (!user?.uid) { setShowAuthModal(true); return; }
-    const makeFav = !favIds.includes(teacherId);
-    try {
-      await setFavorite(user.uid, teacherId, makeFav);
-      setFavIds(prev => makeFav ? [...prev, teacherId] : prev.filter(id => id !== teacherId));
-    } catch (e) {
-      console.error("Failed to toggle favorite:", e);
-    }
-  };
+  const uid = user?.uid || auth.currentUser?.uid;
+
+  if (!uid) { 
+    setShowAuthModal(true); 
+    return; 
+  }
+  
+  const teacherIdStr = String(teacherId);
+  const makeFav = !favIds.includes(teacherIdStr);
+  try {
+    await setFavorite(uid, teacherIdStr, makeFav);
+    const ids = await getFavoriteIds(uid);
+    setFavIds(ids);
+  } catch  {
+    //console.error("Failed to toggle favorite:", e);
+  }
+};
 
   if (loading) return <div>Loading...</div>;
   if (error)   return <div style={{ color: "crimson" }}>{error}</div>;
@@ -97,15 +107,16 @@ useEffect(() => {
       <h1>Teachers</h1>
 
       <div>
-        {items.map((teacher, i) => (
+        {items.map((teacher) => (
           <TeacherCard
-            key={teacher.id || i}
+            key={teacher.id}
             teacher={teacher}
-            isFavorite={favIds.includes(teacher.id)}
+            isFavorite={favIds.includes(String(teacher.id))}
             onToggleFavorite={handleToggleFavorite}
             onBookTrial={() => {}}
           />
         ))}
+        
       </div>
 
       {hasMore && (
