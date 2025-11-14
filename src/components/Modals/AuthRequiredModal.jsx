@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function AuthRequiredModal({ onClose }) {
+export default function AuthRequiredModal({ onClose, onRegister }) {
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && onClose?.();
     window.addEventListener("keydown", onKey);
@@ -22,7 +22,14 @@ export default function AuthRequiredModal({ onClose }) {
         <button onClick={onClose} aria-label="Close" style={{ position:"absolute", top:8, right:8 }}>×</button>
         <h3>Sign in required</h3>
         <p>This feature is available only to authorized users.</p>
-        <button onClick={onClose}>OK</button>
+        <button
+            onClick={() => {
+              onClose?.();
+              onRegister?.();
+            }}
+          >
+            Register
+          </button>
       </div>
     </div>
   );

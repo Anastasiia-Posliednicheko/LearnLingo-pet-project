@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/auth/operations";
@@ -19,6 +19,15 @@ export default function Header() {
     await logoutUser();
     dispatch(logout());
   };
+
+  useEffect(() => {
+  const handleRegister = () => setOpenRegister(true);
+  window.addEventListener("open-register", handleRegister);
+
+  return () => {
+    window.removeEventListener("open-register", handleRegister);
+  };
+}, []);
 
   return (
     <header style={{

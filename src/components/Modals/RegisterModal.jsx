@@ -7,6 +7,8 @@ import { setUser, setPending, setError } from "../../redux/auth/slice";
 import { selectAuthPending, selectAuthError } from "../../redux/auth/selectors";
 import { auth } from "../../services/firebase";
 import { updateProfile } from "firebase/auth";
+import { toast } from "react-hot-toast";
+
 import Authmodal from "./AuthModal";
 
 const schema = yup.object({
@@ -34,9 +36,14 @@ export default function RegisterModal({ onClose }) {
         await updateProfile(auth.currentUser, { displayName: data.name });
       }
       dispatch(setUser({ ...result, name: data.name }));
+      toast.success("Registration successful!");
       onClose?.();
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("open-login"));
+      }, 50);
     } catch (err) {
       dispatch(setError(err.message || "Registration error"));
+      toast.error(err.message || "Registration error"); 
     } finally {
       dispatch(setPending(false));
     }

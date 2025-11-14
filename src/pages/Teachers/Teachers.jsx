@@ -5,6 +5,7 @@ import { getFavoriteIds, setFavorite } from "../../services/favorites.js";
 import { auth } from "../../services/firebase.js";
 import TeacherCard from "../../components/TeacherCard/TeacherCard.jsx";
 import AuthRequiredModal from "../../components/Modals/AuthRequiredModal.jsx"; 
+import TrialLessonModal from "../../components/Modals/TrialLessonModal.jsx";
 
 const PAGE_SIZE = 4;
 
@@ -20,6 +21,10 @@ export default function Teachers() {
   const [btnLoading, setBtnLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [trialTeacher, setTrialTeacher] = useState(null);
+
+  const openRegisterModal = () => window.dispatchEvent(new CustomEvent("open-register"));
+
 
   useEffect(() => {
     (async () => {
@@ -113,9 +118,15 @@ useEffect(() => {
             teacher={teacher}
             isFavorite={favIds.includes(String(teacher.id))}
             onToggleFavorite={handleToggleFavorite}
-            onBookTrial={() => {}}
+            onBookTrial={setTrialTeacher}
           />
         ))}
+        {trialTeacher && (
+       <TrialLessonModal
+            teacher={trialTeacher}
+            onClose={() => setTrialTeacher(null)}
+        />
+        )}
         
       </div>
 
@@ -127,7 +138,12 @@ useEffect(() => {
         </div>
       )}
 
-      {showAuthModal && <AuthRequiredModal onClose={() => setShowAuthModal(false)} />}
+      {showAuthModal && (
+  <AuthRequiredModal
+    onClose={() => setShowAuthModal(false)}
+    onRegister={openRegisterModal}
+  />
+)}
     </div>
   );
 }

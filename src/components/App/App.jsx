@@ -1,5 +1,5 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import Header from "../Header/Header.jsx";
 import PrivateRoute from "../PrivateRoute/PrivateRoute.jsx";
@@ -24,6 +24,13 @@ export default function App() {
           }
         />
       </Routes>
+
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: { borderRadius: "10px", padding: "12px 16px" }
+        }}
+      />
     </>
   );
 }
