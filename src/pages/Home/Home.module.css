@@ -1,0 +1,54 @@
+.container {
+    
+}
+.home {
+    display: flex;
+    gap: 24px;
+}
+.block {
+    padding: 98px 64px;
+    border-radius: 30px;
+    max-width: 720px;
+    width: 100%;
+   
+    background-color: #f8f8f8;
+}
+.titel {
+    max-width: 548px;
+    width: 100%;
+    padding-bottom: 32px;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1.16667;
+    letter-spacing: -0.02em;
+    color: #121417;
+}
+.text {
+    font-style: italic;
+    font-weight: 400;
+    background-color: #FBE9BA;
+}
+.subTitel {
+    padding-bottom: 64px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.375;
+    letter-spacing: -0.02em;
+    color: #121417;
+}
+.button {
+    display: block;
+
+    border-radius: 12px;
+    border: none;
+    padding: 16px 88px;
+    width: 267px;
+    height: 60px;
+    background-color: #f4c550;;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.55556;
+    color: #121417;
+
+}
