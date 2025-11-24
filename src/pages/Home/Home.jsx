@@ -17,6 +17,26 @@ export default function Home() {
                     <img src={block} alt="image" />
                 </div>
             </div>
+            <div className={css.stats}>
+                <div className={css.statsGrid}>
+                    <div className={css.statItem}>
+                        <h2 className={css.statNumber}>32,00+</h2>
+                        <p className={css.statLabel}>Experienced tutors</p>
+                    </div>
+                    <div className={css.statItem}>
+                        <h2 className={css.statNumber}>300,00+</h2>
+                        <p className={css.statLabel}>5-star tutor reviews</p>
+                    </div>
+                    <div className={css.statItem}>
+                        <h2 className={css.statNumber}>120+</h2>
+                        <p className={css.statLabel}>Subjects taught</p>
+                    </div>
+                    <div className={css.statItem}>
+                        <h2 className={css.statNumber}>200+</h2>
+                        <p className={css.statLabel}>Tutor nationalities</p>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }

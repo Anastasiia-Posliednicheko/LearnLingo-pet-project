@@ -7,6 +7,8 @@ import { selectAuthUser, selectAuthPending } from "../../redux/auth/selectors";
 import LoginModal from "../Modals/LoginModal";
 import RegisterModal from "../Modals/RegisterModal";
 
+import css from "./Header.module.css";
+
 export default function Header() {
   const dispatch = useDispatch();
   const user = useSelector(selectAuthUser);
@@ -30,40 +32,36 @@ export default function Header() {
 }, []);
 
   return (
-    <header style={{
-      display:"flex", justifyContent:"space-between", alignItems:"center",
-      padding:"20px 40px", borderBottom:"1px solid #eee", background:"#fff", position:"sticky", top:0, zIndex:50,
-    }}>
-      <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-        <div style={{ width:32, height:32, background:"#ff6b6b", borderRadius:"50%" }} />
-        <span style={{ fontWeight:700, fontSize:20 }}>LearnLingo</span>
-      </div>
-
-      <nav style={{ display:"flex", gap:24 }}>
-        <NavLink to="/" style={{ textDecoration:"none" }}>Home</NavLink>
-        <NavLink to="/teachers" style={{ textDecoration: "none" }}>Teachers</NavLink>
-        {user && (
-          <NavLink to="/favorites" style={{ textDecoration: "none" }}>Favorites</NavLink>
+    <div className={css.container}>
+      <header className={css.header}>
+        <div>
+          <div/>
+          <p className={css.title}>LearnLingo</p>
+        </div>
+        <nav className={css.navigation}>
+          <NavLink to="/" className={css.link}>Home</NavLink>
+          <NavLink to="/teachers" className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}>Teachers</NavLink>
+          {user && (
+            <NavLink to="/favorites" className={css.link}>Favorites</NavLink>
+            )}
+      
+        </nav>
+        <div style={{ display:"flex", gap:12 }}>
+          {user ? (
+            <>
+              <span>{user.displayName || user.name}</span>
+              <button onClick={handleLogout} disabled={pending}>Log out</button>
+            </>
+          ) : (
+            <>
+              <button onClick={() => setOpenLogin(true)}>Log in</button>
+              <button onClick={() => setOpenRegister(true)}>Register</button>
+            </>
           )}
-        
-      </nav>
-
-      <div style={{ display:"flex", gap:12 }}>
-        {user ? (
-          <>
-            <span>{user.displayName || user.name}</span>
-            <button onClick={handleLogout} disabled={pending}>Log out</button>
-          </>
-        ) : (
-          <>
-            <button onClick={() => setOpenLogin(true)}>Log in</button>
-            <button onClick={() => setOpenRegister(true)}>Register</button>
-          </>
-        )}
-      </div>
-
-      {openLogin && <LoginModal onClose={() => setOpenLogin(false)} />}
-      {openRegister && <RegisterModal onClose={() => setOpenRegister(false)} />}
-    </header>
+        </div>
+        {openLogin && <LoginModal onClose={() => setOpenLogin(false)} />}
+        {openRegister && <RegisterModal onClose={() => setOpenRegister(false)} />}
+      </header>
+    </div>
   );
 }

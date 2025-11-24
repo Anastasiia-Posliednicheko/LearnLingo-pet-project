@@ -1,5 +1,7 @@
 .container {
-    
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 64px;
 }
 .home {
     display: flex;
@@ -51,4 +53,37 @@
     line-height: 1.55556;
     color: #121417;
 
+}
+.stats {
+    margin-top: 24px;
+    padding: 40px 122px;
+    border: 2.50px dashed #f4c550;
+    border-radius: 30px;
+    width: 1312px;
+    height: 116px;
+}
+.statsGrid {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 100px;
+}
+.statItem {
+    display: flex;
+    gap: 16px;
+    
+}
+.statNumber {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.14286;
+    letter-spacing: -0.02em;
+    color: #121417;
+}
+.statLabel {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+    color: rgba(18, 20, 23, 0.7);
 }
