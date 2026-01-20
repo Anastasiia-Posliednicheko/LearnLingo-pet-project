@@ -9,6 +9,7 @@ import { auth } from "../../services/firebase";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import AuthRequiredModal from "../../components/Modals/AuthRequiredModal";
 import Filters from "../../components/Filters/Filters";
+import css  from "./Teachers.module.css";
 
 const PAGE_SIZE = 4;
 
@@ -144,8 +145,7 @@ export default function Teachers() {
   if (error) return <div style={{ color: "crimson" }}>{error}</div>;
 
   return (
-    <div>
-      <h1>Teachers</h1>
+    <div className= {css.box}>
 
       {/* ФІЛЬТРИ */}
       <Filters

@@ -1,0 +1,16 @@
+.title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #8a8a89;
+}
+.set {
+    display: flex;
+    gap: 115px;
+    border-radius: 14px;
+    padding: 16px 148px 16px 18px;
+    width: 221px;
+    height: 48px;
+
+    background: #fff;
+}

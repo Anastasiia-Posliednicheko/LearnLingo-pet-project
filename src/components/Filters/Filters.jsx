@@ -1,9 +1,10 @@
 import { useState } from "react";
+import css from "./Filters.module.css";
 
 export default function Filters({
-  languages,
-  levels,
-  prices,
+  languages = [],
+  levels = [],
+  prices = [],
   langFilter,
   levelFilter,
   priceFilter,
@@ -43,21 +44,11 @@ export default function Filters({
     <div style={{ display: "flex", gap: "24px", marginBottom: "24px" }}>
       {/* LANGUAGE */}
       <div style={{ position: "relative" }}>
-        <div style={{ fontSize: 14, marginBottom: 4 }}>Language</div>
+        <div className={css.title}>Language</div>
 
         <div
           onClick={() => setOpenLang(!openLang)}
-          style={{
-            width: 160,
-            padding: "8px 12px",
-            border: "1px solid #ccc",
-            borderRadius: 8,
-            cursor: "pointer",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            background: "#fff",
-          }}
+          className={css.set}
         >
           <span>{langFilter || languages[0]}</span>
           <span>{openLang ? ArrowUp : ArrowDown}</span>
@@ -102,21 +93,11 @@ export default function Filters({
 
       {/* LEVEL */}
       <div style={{ position: "relative" }}>
-        <div style={{ fontSize: 14, marginBottom: 4 }}>Level</div>
+        <div className={css.title}>Level of knowledge</div>
 
         <div
           onClick={() => setOpenLevel(!openLevel)}
-          style={{
-            width: 160,
-            padding: "8px 12px",
-            border: "1px solid #ccc",
-            borderRadius: 8,
-            cursor: "pointer",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            background: "#fff",
-          }}
+          className={css.set}
         >
           <span>{levelFilter || levels[0]}</span>
           <span>{openLevel ? ArrowUp : ArrowDown}</span>
@@ -161,21 +142,11 @@ export default function Filters({
 
       {/* PRICE */}
       <div style={{ position: "relative" }}>
-        <div style={{ fontSize: 14, marginBottom: 4 }}>Price</div>
+        <div className={css.title}>Price</div>
 
         <div
           onClick={() => setOpenPrice(!openPrice)}
-          style={{
-            width: 160,
-            padding: "8px 12px",
-            border: "1px solid #ccc",
-            borderRadius: 8,
-            cursor: "pointer",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            background: "#fff",
-          }}
+          className={css.set}
         >
           <span>{priceFilter || prices[0]}</span>
           <span>{openPrice ? ArrowUp : ArrowDown}</span>
