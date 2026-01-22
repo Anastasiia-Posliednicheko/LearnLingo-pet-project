@@ -147,7 +147,6 @@ export default function Teachers() {
   return (
     <div className= {css.box}>
 
-      {/* ФІЛЬТРИ */}
       <Filters
         languages={languages}
         levels={levels}
@@ -160,7 +159,7 @@ export default function Teachers() {
         onPriceChange={setPriceFilter}
       />
 
-      <div>
+      <div className={css.card}>
         {filteredItems.map((teacher) => (
           <TeacherCard
             key={teacher.id}
@@ -173,7 +172,7 @@ export default function Teachers() {
       </div>
 
       {hasMore && (
-        <div style={{ marginTop: 20 }}>
+        <div>
           <button onClick={onLoadMore} disabled={btnLoading}>
             {btnLoading ? "Loading..." : "Load more"}
           </button>

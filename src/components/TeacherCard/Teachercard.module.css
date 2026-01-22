@@ -1,0 +1,202 @@
+.card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px;
+    border: 1px solid #f3f3f3;
+    
+}
+
+/* верхняя часть: фото + контент + сердце */
+.top {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.image {
+    border: 3px solid #fbe9ba;
+    border-radius: 100px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+.body {
+    flex: 1;
+    min-width: 0;
+}
+
+/* первая строка “Languages … Price” */
+.metaRow {
+    display: flex;
+    flex-wrap: nowrap;
+    /* без переноса */
+    gap: 16px;
+    align-items: center;
+    overflow: hidden;
+    /* чтобы не ломало верстку */
+    white-space: nowrap;
+}
+
+.metaLabel {
+    font-weight: 500;
+    font-size: 14px;
+    color: #8a8a89;
+}
+
+.metaItem {
+    font-weight: 500;
+    font-size: 14px;
+    color: #121417;
+    opacity: 0.8;
+}
+
+/* имя — новой строкой */
+.name {
+    margin: 8px 0 8px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.1;
+    color: #121417;
+}
+
+/* строки “Speaks / Lesson Info / Conditions” */
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.line {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #121417;
+}
+
+/* кнопка Read more ниже */
+.readMore {
+    margin-top: 14px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    font-weight: 500;
+    font-size: 16px;
+    color: #121417;
+    text-decoration: underline;
+}
+
+/* сердце справа сверху */
+.favBtn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    padding: 6px;
+}
+
+.favBtn:hover {
+    transform: scale(1.06);
+}
+
+/* раскрытая часть */
+.more {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.experience {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #121417;
+}
+
+/* отзывы */
+.reviews b {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.reviewList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reviewItem {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.reviewAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+.reviewText {
+    min-width: 0;
+}
+
+.reviewHead {
+    font-weight: 500;
+    font-size: 14px;
+    color: #121417;
+    margin-bottom: 4px;
+}
+
+.reviewBody {
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(18, 20, 23, 0.8);
+}
+
+/* теги уровней */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 8px 12px;
+    border-radius: 24px;
+    border: 1px solid #f3f3f3;
+    background: #fff;
+
+    font-weight: 500;
+    font-size: 14px;
+    color: #121417;
+}
+
+/* кнопка бронирования */
+.bookBtn {
+    height: 48px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 12px;
+    background: #f4c550;
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 16px;
+    color: #121417;
+}
+
+.bookBtn:hover {
+    filter: brightness(0.96);
+}
