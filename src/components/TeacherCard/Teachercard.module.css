@@ -1,17 +1,21 @@
 .card {
-    background: #fff;
-    border-radius: 24px;
-    padding: 24px;
-    border: 1px solid #f3f3f3;
-    
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
 }
-
-/* верхняя часть: фото + контент + сердце */
 .top {
     display: flex;
-    gap: 16px;
+    gap: 48px;
     align-items: flex-start;
-    position: relative;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    border-radius: 24px;
+    padding: 24px;
+    width: 1184px;
+    height: 328px;
+
+    
 }
 
 .image {
@@ -24,26 +28,46 @@
 }
 
 .body {
-    flex: 1;
-    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 968px;
+    height: 280px;
 }
 
-/* первая строка “Languages … Price” */
 .metaRow {
     display: flex;
-    flex-wrap: nowrap;
-    /* без переноса */
-    gap: 16px;
-    align-items: center;
-    overflow: hidden;
-    /* чтобы не ломало верстку */
-    white-space: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
 }
-
-.metaLabel {
+.metaLabelLanguages {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.5;
     color: #8a8a89;
+    margin-right: 149px;
+}
+.meta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 64px;
+    
+}
+.metaLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 64px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #121417;
 }
 
 .metaItem {
@@ -53,72 +77,98 @@
     opacity: 0.8;
 }
 
-/* имя — новой строкой */
 .name {
-    margin: 8px 0 8px;
+    margin: 8px 0 32px;
     font-weight: 500;
     font-size: 24px;
-    line-height: 1.1;
+    line-height: 1;
     color: #121417;
 }
 
-/* строки “Speaks / Lesson Info / Conditions” */
 .details {
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .line {
+    display: flex;
+    font-weight: 500;
     font-size: 16px;
-    line-height: 1.4;
+    line-height: 1.5;
+    color: #8a8a89;
+}
+.lineSpeaks {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
     color: #121417;
+   
+}
+.value {
+    color: #121417;
+    
 }
 
-/* кнопка Read more ниже */
 .readMore {
-    margin-top: 14px;
+    margin-top: 16px;
     padding: 0;
     border: none;
     background: transparent;
-    cursor: pointer;
-
     font-weight: 500;
     font-size: 16px;
-    color: #121417;
+    line-height: 1.5;
     text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #121417;
 }
 
-/* сердце справа сверху */
-.favBtn {
-    border: none;
+.buttonFav {
     background: transparent;
-    cursor: pointer;
-    font-size: 22px;
-    line-height: 1;
+    border: none;
     padding: 6px;
+    cursor: pointer;
+    line-height: 0;
 }
 
-.favBtn:hover {
-    transform: scale(1.06);
+.heart {
+    transition: transform 0.2s ease, fill 0.2s ease;
 }
 
-/* раскрытая часть */
+.buttonFav:hover .heart {
+    transform: scale(1.1);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.tag {
+    border: 1px solid rgba(18, 20, 23, 0.2);
+    border-radius: 35px;
+    padding: 8px 12px;
+}
+
 .more {
-    margin-top: 18px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 32px;
+    width: 1184px;
 }
 
 .experience {
-    margin: 0;
+    
+    font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
     color: #121417;
 }
 
-/* отзывы */
+
 .reviews b {
     display: inline-block;
     margin-bottom: 8px;
@@ -165,25 +215,7 @@
     color: rgba(18, 20, 23, 0.8);
 }
 
-/* теги уровней */
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
 
-.tag {
-    padding: 8px 12px;
-    border-radius: 24px;
-    border: 1px solid #f3f3f3;
-    background: #fff;
-
-    font-weight: 500;
-    font-size: 14px;
-    color: #121417;
-}
-
-/* кнопка бронирования */
 .bookBtn {
     height: 48px;
     padding: 0 18px;

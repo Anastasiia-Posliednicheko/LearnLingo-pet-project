@@ -10,6 +10,7 @@ import { updateProfile } from "firebase/auth";
 import { toast } from "react-hot-toast";
 
 import Authmodal from "./AuthModal";
+import css from "./RegisterModal.module.css";
 
 const schema = yup.object({
   name: yup.string().min(2, "Too short").max(50, "Too Long").required("Required"),
@@ -50,26 +51,54 @@ export default function RegisterModal({ onClose }) {
   };
 
   return (
-    <Authmodal title="Registration" onClose={onClose}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Name</label>
-        <input type="text" {...register("name")} />
-        {errors.name && <div style={{ color: "crimson" }}>{errors.name.message}</div>}
+    <Authmodal  onClose={onClose} >
+      <form onSubmit={handleSubmit(onSubmit)} className={css.modal}>
+  <h2 className={css.title}>Registration</h2>
 
-        <label>Email</label>
-        <input type="email" {...register("email")} />
-        {errors.email && <div style={{ color: "crimson" }}>{errors.email.message}</div>}
+  <p className={css.text}>
+    Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information
+  </p>
 
-        <label>Password</label>
-        <input type="password" {...register("password")} />
-        {errors.password && <div style={{ color: "crimson" }}>{errors.password.message}</div>}
+  <div className={css.field}>
+    <input
+      type="text"
+      {...register("name")}
+      className={css.input}
+      placeholder=" "
+    />
+    <label className={css.label}>Name</label>
+    {errors.name && <div className={css.error}>{errors.name.message}</div>}
+  </div>
 
-        {error && <div style={{ color: "crimson", marginTop: 8 }}>{error}</div>}
+  <div className={css.field}>
+    <input
+      type="email"
+      {...register("email")}
+      className={css.input}
+      placeholder=" "
+    />
+    <label className={css.label}>Email</label>
+    {errors.email && <div className={css.error}>{errors.email.message}</div>}
+  </div>
 
-        <button type="submit" disabled={pending} style={{ marginTop: 12 }}>
-          Register
-        </button>
-      </form>
+  <div className={css.field}>
+    <input
+      type="password"
+      {...register("password")}
+      className={css.input}
+      placeholder=" "
+    />
+    <label className={css.label}>Password</label>
+    {errors.password && <div className={css.error}>{errors.password.message}</div>}
+  </div>
+
+  {error && <div className={css.error}>{error}</div>}
+
+  <button type="submit" disabled={pending} className={css.submit}>
+    Sign Up
+  </button>
+</form>
+
     </Authmodal>
   );
 }

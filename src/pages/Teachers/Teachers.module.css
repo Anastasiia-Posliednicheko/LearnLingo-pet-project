@@ -1,13 +1,11 @@
-.box {
+.container {
+    background: #f8f8f8;
+}
+.card {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     gap: 32px;
     background: #f8f8f8;
-}
-.card {
-    display: flex;
-    flex-direction: column;
-
 }

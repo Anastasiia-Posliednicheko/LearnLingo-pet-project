@@ -6,6 +6,7 @@ import { loginUser } from "../../redux/auth/operations";
 import { setUser, setPending, setError } from "../../redux/auth/slice";
 import { selectAuthPending, selectAuthError } from "../../redux/auth/selectors";
 import Authmodal from "./AuthModal";
+import css from "./RegisterModal.module.css";
 
 const schema = yup.object({
   email: yup.string().email("Invalid email").required("Required"),
@@ -37,20 +38,39 @@ export default function LoginModal({ onClose }) {
   };
 
   return (
-    <Authmodal title="Log in" onClose={onClose}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Email</label>
-        <input type="email" {...register("email")} />
-        {errors.email && <div style={{ color: "crimson" }}>{errors.email.message}</div>}
-
-        <label>Password</label>
-        <input type="password" {...register("password")} />
-        {errors.password && <div style={{ color: "crimson" }}>{errors.password.message}</div>}
-
-        {error && <div style={{ color: "crimson", marginTop: 8 }}>{error}</div>}
-
-        <button type="submit" disabled={pending} style={{ marginTop: 12 }}>
-          Log in
+    <Authmodal onClose={onClose}>
+      <form onSubmit={handleSubmit(onSubmit)} className={css.modal}>
+        <h2 className={css.title}>Log In</h2>
+      
+        <p className={css.text}>
+          Welcome back! Please enter your credentials to access your account and continue your search for an teacher.
+        </p>
+        <div className={css.field}>
+          <input
+            type="email"
+            {...register("email")}
+            className={css.input}
+            placeholder=" "
+          />
+          <label className={css.label}>Email</label>
+          {errors.email && <div className={css.error}>{errors.email.message}</div>}
+        </div>
+      
+        <div className={css.field}>
+          <input
+            type="password"
+            {...register("password")}
+            className={css.input}
+            placeholder=" "
+          />
+          <label className={css.label}>Password</label>
+          {errors.password && <div className={css.error}>{errors.password.message}</div>}
+        </div>
+      
+        {error && <div className={css.error}>{error}</div>}
+      
+        <button type="submit" disabled={pending} className={css.submit}>
+          Log In
         </button>
       </form>
     </Authmodal>

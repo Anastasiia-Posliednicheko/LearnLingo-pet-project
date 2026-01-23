@@ -145,7 +145,7 @@ export default function Teachers() {
   if (error) return <div style={{ color: "crimson" }}>{error}</div>;
 
   return (
-    <div className= {css.box}>
+    <div className={css.container}>
 
       <Filters
         languages={languages}
