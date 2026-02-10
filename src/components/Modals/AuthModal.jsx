@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import css from "./RegisterModal.module.css";
 
 export default function AuthModal({ title, onClose, children }) {
   const backdropRef = useRef(null);
@@ -19,31 +20,19 @@ export default function AuthModal({ title, onClose, children }) {
       onClick={onBackdropClick}
       role="dialog"
       aria-modal="true"
-      style={{
-        position: "fixed", inset: 0, background: "rgba(0,0,0,.5)",
-        display: "grid", placeItems: "center", zIndex: 100,
-      }}
+      className={css.backdrop}
     >
-      <div
-        style={{
-          background: "#fff", borderRadius: 12, padding: 20, minWidth: 360,
-          position: "relative", boxShadow: "0 8px 30px rgba(0,0,0,.15)",
-        }}
-      >
+      <div>
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          style={{
-            position: "absolute", top: 8, right: 8,
-            background: "transparent", border: "none",
-            fontSize: 20, cursor: "pointer", lineHeight: 1,
-          }}
+          className={css.close}
         >
           ×
         </button>
 
-        {title && <h3 style={{ marginBottom: 12 }}>{title}</h3>}
+        {title && <h3 className={css.title}>{title}</h3>}
         {children}
       </div>
     </div>

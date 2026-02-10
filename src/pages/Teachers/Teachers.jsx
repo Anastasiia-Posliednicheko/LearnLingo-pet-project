@@ -8,6 +8,7 @@ import { auth } from "../../services/firebase";
 
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import AuthRequiredModal from "../../components/Modals/AuthRequiredModal";
+import RegisterModal from "../../components/Modals/RegisterModal";
 import Filters from "../../components/Filters/Filters";
 import css  from "./Teachers.module.css";
 
@@ -36,6 +37,7 @@ export default function Teachers() {
   const [error, setError] = useState(null);
 
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -166,7 +168,8 @@ export default function Teachers() {
             teacher={teacher}
             isFavorite={favIds.includes(String(teacher.id))}
             onToggleFavorite={handleToggleFavorite}
-            onBookTrial={() => {}}
+            onBookTrial={() => { }}
+            activeLevel={levelFilter}
           />
         ))}
       </div>
@@ -180,7 +183,15 @@ export default function Teachers() {
       )}
 
       {showAuthModal && (
-        <AuthRequiredModal onClose={() => setShowAuthModal(false)} />
+        <>
+         <AuthRequiredModal
+           onClose={() => setShowAuthModal(false)}
+           onRegister={() => setOpenRegister(true)}
+          />
+          {openRegister && (
+            <RegisterModal onClose={() => setOpenRegister(false)} />
+          )}
+        </>
       )}
     </div>
   );

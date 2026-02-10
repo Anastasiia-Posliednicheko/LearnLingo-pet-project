@@ -55,7 +55,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 64px;
+    gap: 32px;
     
 }
 .metaLabel {
@@ -63,11 +63,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 64px;
+    gap: 4px;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     color: #121417;
+}
+.metaLabel:not(:last-child)::after {
+    content: "";
+    width: 1px;
+    height: 16px;
+    background-color: rgba(18, 20, 23, 0.2);
+    margin-left: 16px;
 }
 
 .metaItem {
@@ -75,6 +82,9 @@
     font-size: 14px;
     color: #121417;
     opacity: 0.8;
+}
+.price {
+    color: #38cd3e;
 }
 
 .name {
@@ -152,6 +162,14 @@
     border: 1px solid rgba(18, 20, 23, 0.2);
     border-radius: 35px;
     padding: 8px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14286;
+    color: #121417;
+}
+.tagActive {
+    background-color: #f4c550;
+    border-color: #f4c550;
 }
 
 .more {

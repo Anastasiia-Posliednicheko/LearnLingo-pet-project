@@ -7,6 +7,7 @@ export default function TeacherCard({
   isFavorite = false,
   onToggleFavorite,
   onBookTrial,
+  activeLevel,
 }) {
   const [open, setOpen] = useState(false);
 
@@ -54,10 +55,19 @@ export default function TeacherCard({
             <div className={css.metaRow}>
               <span className={css.metaLabelLanguages}>Languages</span>
               <div className={css.meta}>
-                <span className={css.metaLabel}>Lessons online</span>
+              <span className={css.metaLabel}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.6667 4.13333C14.6667 3.3866 14.6667 3.01323 14.5213 2.72801C14.3935 2.47713 14.1895 2.27316 13.9387 2.14532C13.6534 2 13.2801 2 12.5333 2H12.2667C10.7732 2 10.0265 2 9.45603 2.29065C8.95426 2.54631 8.54631 2.95426 8.29065 3.45603C8 4.02646 8 4.77319 8 6.26667V14L8.0667 13.8999C8.5298 13.2053 8.76135 12.858 9.06727 12.6065C9.33809 12.3839 9.65016 12.2169 9.9856 12.1151C10.3645 12 10.7819 12 11.6168 12H12.5333C13.2801 12 13.6534 12 13.9387 11.8547C14.1895 11.7268 14.3935 11.5229 14.5213 11.272C14.6667 10.9868 14.6667 10.6134 14.6667 9.86667V4.13333Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M1.33325 4.13333C1.33325 3.3866 1.33325 3.01323 1.47858 2.72801C1.60641 2.47713 1.81038 2.27316 2.06126 2.14532C2.34648 2 2.71985 2 3.46659 2H3.73325C5.22673 2 5.97346 2 6.54389 2.29065C7.04566 2.54631 7.45361 2.95426 7.70927 3.45603C7.99992 4.02646 7.99992 4.77319 7.99992 6.26667V14L7.93322 13.8999C7.47012 13.2053 7.23857 12.858 6.93265 12.6065C6.66182 12.3839 6.34976 12.2169 6.01432 12.1151C5.63542 12 5.21799 12 4.38313 12H3.46659C2.71985 12 2.34648 12 2.06126 11.8547C1.81038 11.7268 1.60641 11.5229 1.47858 11.272C1.33325 10.9868 1.33325 10.6134 1.33325 9.86667V4.13333Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Lessons online</span>
                 <span className={css.metaLabel}>Lessons done: {lessons_done}</span>
-                <span className={css.metaLabel}>Rating: {Number(rating).toFixed(1)}</span>
-                <span className={css.metaLabel}>Price / 1 hour: ${price_per_hour}</span>
+              <span className={css.metaLabel}>
+                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.88965 4.12573C9.0488 4.42725 9.33887 4.63786 9.6748 4.69604L13.4746 5.35229L10.7871 8.11987C10.5496 8.36444 10.4388 8.70526 10.4873 9.04272L11.0361 12.8601L7.5752 11.1589L7.45801 11.1091C7.21993 11.0245 6.95976 11.0245 6.72168 11.1091L6.60449 11.1589L3.14258 12.8601L3.69238 9.04272C3.74091 8.70526 3.6301 8.36444 3.39258 8.11987L0.704102 5.35229L4.50488 4.69604C4.84082 4.63786 5.13088 4.42725 5.29004 4.12573L7.08984 0.7146L8.88965 4.12573Z" fill="#FFC531" stroke="#FFC531" stroke-width="1.2" />
+                </svg>
+                Rating: {Number(rating).toFixed(1)}</span>
+                <span className={css.metaLabel}>Price / 1 hour: <span className={css.price}>${price_per_hour}</span></span>
               </div>
             </div>
             <h3 className={css.name}>{name} {surname}</h3>
@@ -78,7 +88,14 @@ export default function TeacherCard({
             {!!levelsTags.length && (
               <div className={css.tags}>
                 {levelsTags.map((lvl, i) => (
-                  <span key={i} className={css.tag}>#{lvl}</span>
+                  <span
+        key={i}
+        className={`${css.tag} ${
+          activeLevel && lvl === activeLevel ? css.tagActive : ""
+        }`}
+      >
+        #{lvl}
+      </span>
                 ))}
               </div>
                     )}
