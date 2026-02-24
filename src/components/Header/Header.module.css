@@ -78,3 +78,16 @@
     color: #fff;
 
 }
+
+.userName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #121417;
+    border: none;
+    background-color: transparent;
+}

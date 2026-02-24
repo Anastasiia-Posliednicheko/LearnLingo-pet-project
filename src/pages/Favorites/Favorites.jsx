@@ -5,6 +5,8 @@ import { fetchAllTeachers } from "../../services/teachers.js";
 import { getFavoriteIds } from "../../services/favorites.js";
 import TeacherCard from "../../components/TeacherCard/TeacherCard.jsx";
 
+import css from "./Favorites.module.css";
+
 export default function Favorites() {
   const user = useSelector((s) => s.auth.user);
 
@@ -53,11 +55,11 @@ export default function Favorites() {
     })();
   }, [user?.uid]);
 
-  if (loading) return <div style={{ padding: 24 }}>Loading favorites...</div>;
+  if (loading) return <div className={css.loading}>Loading favorites...</div>;
 
   if (error) {
     return (
-      <div style={{ padding: 24, textAlign: "center" }}>
+      <div className={css.error}>
         <h2>{error}</h2>
         {!user && <p>Please log in to view your favorite teachers.</p>}
       </div>
@@ -65,7 +67,7 @@ export default function Favorites() {
   }
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className={css.list}>
       <h1>Favorites</h1>
       {favTeachers.length > 0 ? (
         <div>

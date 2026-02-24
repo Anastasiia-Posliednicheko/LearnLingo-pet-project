@@ -59,8 +59,8 @@ export default function Header() {
         <div className={css.form}>
           {user ? (
             <>
-              <span>{user.displayName || user.name}</span>
-              <button onClick={handleLogout} disabled={pending}>Log out</button>
+              <span className={css.userName}>{user.displayName || user.name}</span>
+              <button className={css.buttonReg} onClick={handleLogout} disabled={pending}>Log out</button>
             </>
           ) : (
               <>

@@ -1,0 +1,13 @@
+.loading {
+    padding: 14px;
+}
+.error {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    
+}
+.list {
+    padding: 32px;
+    
+}
