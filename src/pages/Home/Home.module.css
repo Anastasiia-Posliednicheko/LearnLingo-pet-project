@@ -44,13 +44,17 @@
     padding: 16px 88px;
     width: 267px;
     height: 60px;
-    background-color: #f4c550;;
+    background: #ffdc86;
 
     font-weight: 700;
     font-size: 16px;
     line-height: 1.55556;
     color: #121417;
 
+}
+.button:hover,
+.button:focus {
+    background-color: #f4c550;
 }
 .stats {
     margin-top: 24px;

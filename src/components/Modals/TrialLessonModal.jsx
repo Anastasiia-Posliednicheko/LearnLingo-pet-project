@@ -51,8 +51,16 @@ export default function TrialLessonModal({ teacher, onClose }) {
   };
 
   return (
-    <AuthModal  onClose={onClose}>
+    <AuthModal>
       <form onSubmit={handleSubmit(onSubmit)} className={css.modal}>
+        <button
+          type="button"
+          className={css.close}
+          onClick={onClose}
+          aria-label="Close"
+        >
+         ×
+       </button>
         <h2 className={css.title}>Book trial lesson</h2>
       <p className={css.text}>
         Our experienced tutor will assess your current language level, discuss

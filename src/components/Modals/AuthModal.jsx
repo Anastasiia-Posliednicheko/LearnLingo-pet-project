@@ -23,14 +23,6 @@ export default function AuthModal({ title, onClose, children }) {
       className={css.backdrop}
     >
       <div>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className={css.close}
-        >
-          ×
-        </button>
 
         {title && <h3 className={css.title}>{title}</h3>}
         {children}

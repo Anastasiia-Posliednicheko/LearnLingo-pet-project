@@ -181,6 +181,7 @@ export default function Teachers() {
       {hasMore && (
         <div>
           <button onClick={onLoadMore} disabled={btnLoading} className={css.button}>
+            {btnLoading && <span className={css.spinner} aria-hidden="true" />}
             {btnLoading ? "Loading..." : "Load more"}
           </button>
         </div>

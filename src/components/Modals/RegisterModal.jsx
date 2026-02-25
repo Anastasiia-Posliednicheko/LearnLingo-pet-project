@@ -51,8 +51,16 @@ export default function RegisterModal({ onClose }) {
   };
 
   return (
-    <Authmodal  onClose={onClose} >
+    <Authmodal>
       <form onSubmit={handleSubmit(onSubmit)} className={css.modal}>
+        <button
+          type="button"
+          className={css.close}
+          onClick={onClose}
+          aria-label="Close"
+        >
+         ×
+       </button>
   <h2 className={css.title}>Registration</h2>
 
   <p className={css.text}>
