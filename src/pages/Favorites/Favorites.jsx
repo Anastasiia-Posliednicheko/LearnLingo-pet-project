@@ -67,10 +67,9 @@ export default function Favorites() {
   }
 
   return (
-    <div className={css.list}>
-      <h1>Favorites</h1>
+    <div >
       {favTeachers.length > 0 ? (
-        <div>
+        <div className={css.list}>
           {favTeachers.map((teacher) => (
             <TeacherCard
               key={teacher.id}

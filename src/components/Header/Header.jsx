@@ -32,7 +32,6 @@ export default function Header() {
 }, []);
 
   return (
-    <div className={css.container}>
       <header className={css.header}>
         <div className={css.logo}>
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
@@ -102,6 +101,5 @@ export default function Header() {
         {openLogin && <LoginModal onClose={() => setOpenLogin(false)} />}
         {openRegister && <RegisterModal onClose={() => setOpenRegister(false)} />}
       </header>
-    </div>
   );
 }

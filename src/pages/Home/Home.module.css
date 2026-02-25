@@ -1,7 +1,5 @@
-.container {
-    max-width: 1440px;
-    width: 100%;
-    padding: 0 64px;
+.blockHome {
+    padding: 20px 64px 32px 64px;
 }
 .home {
     display: flex;
@@ -59,8 +57,8 @@
     padding: 40px 122px;
     border: 2.50px dashed #f4c550;
     border-radius: 30px;
-    width: 1312px;
     height: 116px;
+    
 }
 .statsGrid {
     display: flex;

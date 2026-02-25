@@ -6,7 +6,7 @@ import block from "../../image/block.jpg";
 export default function Home() {
     const navigate = useNavigate();
     return (
-        <section className={css.container}>
+        <section className={css.blockHome} >
             <div className={css.home} >
                 <div className={css.block}>
                     <h1 className={css.titel}>Unlock your potential with the best <span className={css.text}>language</span> tutors</h1>

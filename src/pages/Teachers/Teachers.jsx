@@ -151,7 +151,7 @@ export default function Teachers() {
   if (error) return <div style={{ color: "crimson" }}>{error}</div>;
 
   return (
-    <div className={css.container}>
+    <div className={css.blockTeachers}>
 
       <Filters
         languages={languages}
@@ -180,7 +180,7 @@ export default function Teachers() {
 
       {hasMore && (
         <div>
-          <button onClick={onLoadMore} disabled={btnLoading}>
+          <button onClick={onLoadMore} disabled={btnLoading} className={css.button}>
             {btnLoading ? "Loading..." : "Load more"}
           </button>
         </div>
